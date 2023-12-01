@@ -1,0 +1,35 @@
+# tracé de courbes
+
+#importation des bibliothèques
+from math import *
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+
+def coeff_diff_eq(e, r):
+    D = (((1-e)**2 + 3*(e**2)) + 2*e*(1-2*e)*(r**(-1))) /( 1 + 2*e*(1 - r))
+    return D
+
+def trace_coeff_diff_eq(e):
+    
+    #abscisse 
+    r = np.linspace(1, 350)
+    
+    #ordonnee
+    D = [coeff_diff_eq(e,r) for k in range(len(r))]
+
+    #tracé du graphe
+    plt.plot(r, D)
+
+    #titres des axes et du graphe
+    plt.xlabel('rapport des coefficients de diffusion: Dj / Dg ')
+    plt.ylabel('rapport des coefficients de diffusion: De / Dg')
+    plt.title('Influence de l épaisseur du joint de grain')
+    
+
+    plt.grid(True)  # Affiche la grille
+    plt.show()  # Affiche le graphique
+    
+
+
